@@ -3,10 +3,12 @@ import * as Joi from "joi";
 
 interface EnviromentVaraibles {
 	NATS_SERVER: string;
+	JWT_SECRET: string;
 }
 
 const enviromentSchema = Joi.object({
 	NATS_SERVER: Joi.string().required(),
+	JWT_SECRET: Joi.string().required(),
 }).unknown();
 
 // Leemos toda la información del process.env de forma síncrona y validamos si cumple con nuestro esquema.
@@ -26,4 +28,5 @@ const env: EnviromentVaraibles = value;
 // Exportamos para toda nuestra aplicación, las variables de entorno propias
 export const enviromentVariables = {
 	natsSever: env.NATS_SERVER,
+	jwtSecret: env.JWT_SECRET,
 };
