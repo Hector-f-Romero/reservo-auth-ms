@@ -73,6 +73,6 @@ export class AuthService {
 		console.log("TOKEN FIRMADO");
 
 		// 4. Envía al gateway el token firmado.
-		return { status: "OK", code: 200, message: { username, token: jwt } };
+		return { status: "OK", code: 200, message: { username, id, token: jwt } };
 	}
 }
