@@ -54,7 +54,7 @@ export class AuthService {
 	async login(loginUserDto: LoginUserDto) {
 		// 1. Verificar que el usuario existe en la BD llamando al MS.
 		const userMsResponse = await firstValueFrom(
-			this.client.send("users.login", loginUserDto),
+			this.client.send("users.auth.login", loginUserDto),
 		);
 
 		// 2. Si el usuario no existe o la contraseña es incorrecta, manda al gateway un error.
