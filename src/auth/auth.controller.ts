@@ -3,6 +3,7 @@ import { MessagePattern, Payload } from "@nestjs/microservices";
 
 import type { LoginUserDto } from "./dto/login-user.dto";
 import { AuthService } from "./auth.service";
+import { JwtAppPayload } from "./dto/jwt-payload.dto";
 
 @Controller()
 export class AuthController {
@@ -11,6 +12,11 @@ export class AuthController {
 	@MessagePattern("auth.login")
 	login(@Payload() loginUserDto: LoginUserDto) {
 		return this.authService.login(loginUserDto);
+	}
+
+	@MessagePattern("auth.signup")
+	singUpUser(@Payload() newUser: JwtAppPayload) {
+		return this.authService.signUp(newUser);
 	}
 
 	@MessagePattern("auth.verify")

@@ -75,4 +75,9 @@ export class AuthService {
 		// 4. Envía al gateway el token firmado.
 		return { status: "OK", code: 200, message: { username, id, token: jwt } };
 	}
+
+	async signUp(newUser: JwtAppPayload) {
+		const token = await this.signToken(newUser);
+		return { status: "OK", code: 200, message: { token } };
+	}
 }
